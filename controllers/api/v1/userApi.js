@@ -72,7 +72,7 @@ module.exports.loginUser = async function(req, res) {
         return res.json(200, {
             message: 'Login Successful and here is your token',
             data: {
-                jwtToken: jwt.sign(user.toJSON(), 'authenticationapi', { expiresIn: '400000' }) //checking here for auth where is the same for the other piece
+                jwtToken: jwt.sign(user.toJSON(), 'authenticationapi', { expiresIn: '400000' }) 
             } 
         });
 
@@ -88,17 +88,17 @@ module.exports.loginUser = async function(req, res) {
 
 
 
-// get all reports of specific status
+// get own Details
 module.exports.userDetails = async function (req, res) {
     try{
         // console.log('***********************************************************', req.params);
         let id = req.params.id;
-        let user = USER.findById({id}, 'user date -_id')
+        let user = USER.findById({id}, 'user date -_id');
         USER.findById(id, function(err, user) {
             if(user) {
                 return res.json(200, {
                     status: 200,
-                    message: 'User Details:',
+                    message: 'Own Details:',
                     user: user
                 });
             } else {
@@ -116,7 +116,38 @@ module.exports.userDetails = async function (req, res) {
             message: 'Internal Server Error'
         })
     }
-            
-        
+             
 }
 
+
+module.exports.allUser = async function (req, res) {
+    try{
+        let id = req.params.id;
+        let user = USER.findById({id}, 'user date -_id');
+        let allUser= await USER.find({});
+        USER.findById(id, function(err, user) {
+            if(user) {
+                return res.json(200, {
+                    status: 200,
+                    message: 'All User Details:',
+                    data: {
+                        allUser:allUser
+                    }
+                });
+            } else {
+                return res.json(500, { 
+                    status: 500,
+                    message: 'User not found!'
+                })
+            }
+        })
+
+    } catch (err) {
+        console.log('Error', err);
+        return res.json(500, {
+            status: 500,
+            message: 'Internal Server Error'
+        })
+    }
+             
+}
