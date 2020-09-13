@@ -1,0 +1,21 @@
+{
+  "name": "authentication_api",
+  "version": "1.0.0",
+  "description": "it's an api for user authentication",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "npm start"
+  },
+  "author": "suvendu polley",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "lodash": "^4.17.20",
+    "mongoose": "^5.10.5",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {}
+}
