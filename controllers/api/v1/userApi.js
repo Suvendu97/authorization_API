@@ -72,7 +72,7 @@ module.exports.loginUser = async function(req, res) {
         return res.json(200, {
             message: 'Login Successful and here is your token',
             data: {
-                jwtToken: jwt.sign(user.toJSON(), 'autheticationapi', { expiresIn: '400000' }) //checking here for auth where is the same for the other piece
+                jwtToken: jwt.sign(user.toJSON(), 'authenticationapi', { expiresIn: '400000' }) //checking here for auth where is the same for the other piece
             } 
         });
 
