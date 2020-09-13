@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-// route for userrs requests
+// route for users requests
 router.use('/users', require('./users'));
 
 

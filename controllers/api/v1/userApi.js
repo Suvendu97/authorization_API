@@ -59,6 +59,7 @@ module.exports.createUser = async function (req, res) {
 
 // signing in user and creating token for him/her
 module.exports.loginUser = async function(req, res) {
+    // console.log('***********************************************************', req.body);
 
     try {
         let user = await USER.findOne({ username: req.body.username });
@@ -119,7 +120,7 @@ module.exports.userDetails = async function (req, res) {
              
 }
 
-
+// get all Registered user Details
 module.exports.allUser = async function (req, res) {
     try{
         let id = req.params.id;
